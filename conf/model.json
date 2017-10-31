@@ -1,0 +1,46 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+            	"channel": 5
+            }
+        },
+        "content": [
+            { "reader": {
+                    "name": "oraclereader",
+                    "parameter": {
+                        "username": "n_pre_country",
+                        "password": "n_pre_country",
+                        "where": "",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "$(sql)"
+                                ],
+                                "jdbcUrl": [
+                                  "jdbc:oracle:thin:@22.188.131.42:1521:wmspr"
+                                ]
+                            }
+                        ]
+                    }
+                }
+                    ,
+                 "writer": {
+                    "name": "hdfswriter",
+                    "parameter": {
+                        "defaultFS": "hdfs://22.11.38.82:9000",
+                        "fileType": "text",
+                        "path": "$(hdfsPath)",
+                        "fileName": "$(tname).txt",
+                        "column": [
+				$(col)
+                        ],
+                        "writeMode": "append",
+                        "fieldDelimiter": "&",
+                        "compress":""
+                    }
+                }
+            }
+        ]
+    }
+}
